@@ -384,44 +384,27 @@ function initRsvpAndWishes() {
   const wishesCount = document.getElementById('wishesCount');
   const btnSubmit = document.getElementById('btnSubmitRsvp');
 
-  const STORAGE_KEY = 'wedding_wishes_rifki_ainun';
+  const STORAGE_KEY = 'wedding_wishes_rifki_ainun_live';
 
-  // Seed initial heartfelt wishes matching master reference
-  const defaultWishes = [
-    {
-      name: 'Fitri',
-      status: 'Hadir',
-      message: 'Lancar terus yaa..',
-      time: '1 jam yang lalu'
-    },
-    {
-      name: 'Affa',
-      status: 'Tidak Hadir',
-      message: 'Lancar yaa',
-      time: '3 jam yang lalu'
-    },
-    {
-      name: 'Daffa & Tim Engineer',
-      status: 'Hadir',
-      message: 'Barakallahu lakum wa baraka alaikum wa jama\'a bainakuma fii khoir. Selamat menempuh hidup baru Rifki & Ainun! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah.',
-      time: '5 jam yang lalu'
-    },
-    {
-      name: 'Annisa Rahma & Keluarga',
-      status: 'Hadir',
-      message: 'Masya Allah terharu banget melihat perjalanan cinta kalian dari masa kuliah ITB sampai sekarang pelaminan. Selamat yaa Unun dan Rifki! Bahagia selamanya.',
-      time: '1 hari yang lalu'
-    }
-  ];
+  // Hapus cache dummy lama dari browser jika ada
+  try {
+    localStorage.removeItem('wedding_wishes_rifki_ainun');
+  } catch (e) {}
+
+  // Awalnya kosong bersih (tanpa data dummy)
+  const defaultWishes = [];
 
   function getWishes() {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultWishes));
       return defaultWishes;
     }
     try {
-      return JSON.parse(stored);
+      const parsed = JSON.parse(stored);
+      if (Array.isArray(parsed)) {
+        return parsed.filter(w => !['Fitri', 'Affa', 'Daffa & Tim Engineer', 'Annisa Rahma & Keluarga'].includes(w.name));
+      }
+      return defaultWishes;
     } catch {
       return defaultWishes;
     }
@@ -431,6 +414,15 @@ function initRsvpAndWishes() {
     if (!wishesList) return;
     const wishes = customData || getWishes();
     if (wishesCount) wishesCount.textContent = wishes.length;
+
+    if (!wishes || wishes.length === 0) {
+      wishesList.innerHTML = `
+        <div class="wish-item" style="text-align: center; color: #5a6e5e; font-style: italic; padding: 22px 14px; background: rgba(255, 255, 255, 0.9);">
+          Belum ada ucapan &amp; doa. Jadilah yang pertama memberikan ucapan!
+        </div>
+      `;
+      return;
+    }
 
     wishesList.innerHTML = wishes
       .map(wish => {
