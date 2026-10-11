@@ -15,7 +15,7 @@
 // Tempel URL Web App dari Google Apps Script Anda di bawah ini:
 // Contoh: 'https://script.google.com/macros/s/AKfycb.../exec'
 // =========================================================================
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzIE0Ccd0M2A1gmmpRSff-UCMzRR278AfuFsM_Lym83d6kdxgCtdf1ZjlEdlS6K5E_Q/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz3Zm1IjAQ4zymNO-eVlfMWwpsPSQeEcIm_uF3PqILBIONGhGjb1EqPjd-R2K2XbZu1/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Dynamic Guest Name Parser
