@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>The Wedding of Rifki & Ainun</title>
+  <meta name="description" content="Undangan Pernikahan Digital Rifki Muhammad, S.T., M.Si & Unun Nur Ainun, S.T - Kamis, 5 November 2026 di Masjid & Gedung Aisyah, Tasikmalaya.">
+  <meta property="og:title" content="The Wedding of Rifki & Ainun">
+  <meta property="og:description" content="Kamis, 5 November 2026 | Tasikmalaya">
+  <meta property="og:image" content="asset 1/monogram.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=Miss+Fajardose&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Falling Petals Background Canvas -->
+  <canvas id="petalCanvas"></canvas>
+
+  <!-- Audio Element -->
+  <audio id="bgm" loop preload="auto">
+    <source src="Kahitna - Menikahimu.mp3" type="audio/mp3">
+    <source src="asset 1/Kahitna - Menikahimu.mp3" type="audio/mp3">
+    <source src="wedding-song.mp3" type="audio/mp3">
+    <source src="asset 1/wedding-song.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Floating Audio Player Button -->
+  <div class="audio-control-widget" id="audioToggle" title="Putar / Jeda Musik">
+    <div class="disc-wrapper">
+      <div class="vinyl-disc" id="vinylDisc">
+        <div class="vinyl-groove"></div>
+        <div class="vinyl-center">
+          <i class="fa-solid fa-music" id="audioIcon"></i>
+        </div>
+      </div>
+      <div class="sound-wave" id="soundWave">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Mobile-First Wrapper -->
+  <div class="invitation-container" id="mainContainer">
+
+    <!-- ==================== SECTION 1: FULLSCREEN COVER MODAL ==================== -->
+    <section class="cover-section" id="cover">
+      <div class="layer-container cover-canvas">
+        <!-- 1. Sky with gentle drifting animation -->
+        <div class="cover-sky-wrapper">
+          <img src="asset 1/langit.png" class="cover-sky-img" alt="Langit">
+        </div>
+
+        <!-- 2. Monogram RA -->
+        <img src="asset 1/monogram.png" class="layer-img cover-monogram" alt="Monogram RA">
+
+        <!-- 3. Wedding Invitation Text -->
+        <img src="asset 1/wedding invitation.png" class="layer-img cover-title-invite" alt="The Wedding Invitation">
+
+        <!-- 4. Pop-out 'Rifki & Ainun' Banner -->
+        <div class="cover-banner-wrapper">
+          <img src="asset 1/banner_rifki_ainun.png" class="banner-popout-img" alt="Rifki & Ainun">
+        </div>
+
+        <!-- 5. Bride, Groom & Cats Illustration -->
+        <img src="asset 1/orang.png" class="layer-img cover-couple-char" alt="Mempelai Rifki dan Ainun">
+
+        <!-- 6. Grass Hill Background -->
+        <img src="asset 1/grass.png" class="layer-img cover-grass" alt="Rumput">
+
+        <!-- 7. Refined 'Kepada' Banner & Guest Display (Exact reference style) -->
+        <div class="cover-guest-wrapper">
+          <img src="asset 1/badge_kepada.png" class="badge-kepada-img" alt="Kepada">
+          <div class="guest-name-pill" id="guestPill">
+            <span class="guest-prefix">Yth. Bapak/Ibu/Saudara/i:</span>
+            <h2 class="guest-name" id="guestName">Tamu Undangan</h2>
+            <span class="guest-suffix">di Tempat</span>
+          </div>
+        </div>
+
+        <!-- 8. 'Tanpa Mengurangi Rasa Hormat...' Text -->
+        <img src="asset 1/tanpa mengurangi.png" class="layer-img cover-disclaimer" alt="Mohon maaf permohonan kehadiran">
+
+        <!-- 9. 'Buka Undangan' Banner Button (from asset 1) -->
+        <div class="cover-btn-wrapper">
+          <button class="open-invitation-btn" id="openInvitationBtn" type="button" aria-label="Buka Undangan">
+            <img src="asset 1/btn_buka_undangan.png" class="btn-buka-bg" alt="">
+            <span class="btn-buka-text">Buka Undangan</span>
+          </button>
+        </div>
+
+        <!-- 10. Foreground Wildflowers & Daisies -->
+        <img src="asset 1/bunga depan.png" class="layer-img cover-flowers-fg" alt="Bunga Hias">
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: HERO SECTION ==================== -->
+    <section class="section hero-section" id="hero">
+      <div class="layer-container hero-canvas">
+        <!-- 1. Sky with slow panning animation (same as Page 1) -->
+        <div class="hero-sky-wrapper">
+          <img src="asset 1/langit.png" class="hero-sky-img" alt="Langit">
+        </div>
+
+        <!-- 2. Monogram RA at top -->
+        <img src="asset 1/monogram.png" class="layer-img hero-monogram" alt="Monogram RA">
+
+        <!-- 3. 'The Wedding Of' Title (Pop Out, Centered) -->
+        <div class="hero-title-wrapper">
+          <img src="asset 2/the_wedding_of_crop.png" class="hero-title-img" alt="The Wedding Of">
+        </div>
+
+        <!-- 4. 'Rifki & Ainun' Banner (Pop Out, Centered) -->
+        <div class="hero-banner-wrapper">
+          <img src="asset 1/banner_rifki_ainun.png" class="hero-banner-img" alt="Rifki & Ainun">
+        </div>
+
+        <!-- 5. '5 November 2026' Date (Pop Out, Centered) -->
+        <div class="hero-date-wrapper">
+          <img src="asset 2/date_5_nov_clean.png" class="hero-date-img" alt="5 November 2026">
+        </div>
+
+        <!-- 6. Grass Hill Backdrop (Behind Couple) -->
+        <img src="asset 2/grass 2.png" class="layer-img hero-grass" alt="Taman Rumput">
+
+        <!-- 7. Sitting Couple & Sleeping Cats Illustration (Pop Out) -->
+        <img src="asset 2/rifki ainun 2.png" class="layer-img hero-couple-sitting" alt="Pengantin Duduk">
+
+        <!-- 8. Scroll Down Indicator Button (Pop Out, Centered below cats) -->
+        <div class="hero-scroll-wrapper" id="scrollIndicator" role="button" aria-label="Gulir ke Bawah">
+          <img src="asset 2/scroll_btn_crop.png" class="hero-scroll-img" alt="Gulir ke Bawah">
+        </div>
+
+        <!-- 9. Foreground Flowers -->
+        <img src="asset 2/bunga depan 2.png" class="layer-img hero-flowers" alt="Bunga Hiasan">
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: AR-RUM 21 QUOTE ==================== -->
+    <section class="section quote-section" id="quote">
+      <div class="layer-container quote-canvas">
+        <img src="Asset 3/bg grass ar rum.png" class="layer-img" alt="Background Ar Rum">
+        <img src="Asset 3/banner arrum.png" class="layer-img quote-banner-img pop-out-scroll" alt="Surah Ar-Rum Ayat 21">
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 4: BRIDE & GROOM PROFILE ==================== -->
+    <section class="section profile-section" id="mempelai">
+      <div class="layer-container profile-canvas">
+        <img src="asset 4/grass gede.png" class="layer-img" alt="Background Rumput">
+        <img src="asset 4/batik hijau.png" class="layer-img" alt="Batik Hijau">
+        
+        <!-- Groom Layer (Pop-out on scroll) -->
+        <img src="asset 4/rifki tdr.png" class="layer-img pop-out-scroll" alt="Rifki Muhammad, S.T., M.Si.">
+        <img src="asset 4/banner rifki tdr.png" class="layer-img pop-out-scroll" alt="Profil Rifki">
+        
+        <!-- Bride Layer (Pop-out on scroll) -->
+        <img src="asset 4/ainun tdr.png" class="layer-img pop-out-scroll" alt="Unun Nur Ainun, S.T.">
+        <img src="asset 4/banner ainun tdr.png" class="layer-img pop-out-scroll" alt="Profil Ainun">
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 5: COUNTDOWN & SAVE THE DATE ==================== -->
+    <section class="section countdown-section" id="countdown">
+      <div class="layer-container countdown-canvas">
+        <img src="asset 5/banner countdown.png" class="layer-img countdown-banner-img" alt="Save The Date 05.11.2026">
+
+        <!-- Live Countdown Widget with Instrument Serif typography -->
+        <div class="countdown-widget">
+          <div class="countdown-timer-grid">
+            <div class="timer-col">
+              <span class="timer-number" id="days">00</span>
+              <span class="timer-label">DAYS</span>
+            </div>
+            <div class="timer-colon">:</div>
+            <div class="timer-col">
+              <span class="timer-number" id="hours">00</span>
+              <span class="timer-label">HOURS</span>
+            </div>
+            <div class="timer-colon">:</div>
+            <div class="timer-col">
+              <span class="timer-number" id="minutes">00</span>
+              <span class="timer-label">MINS</span>
+            </div>
+            <div class="timer-colon">:</div>
+            <div class="timer-col">
+              <span class="timer-number" id="seconds">00</span>
+              <span class="timer-label">SECS</span>
+            </div>
+          </div>
+          <div class="countdown-date-subtext">5 November 2026 - 07.30 WIB</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 6: EVENT DETAILS (AKAD & RESEPSI) ==================== -->
+    <section class="section event-section" id="acara">
+      <!-- One continuous tall canvas spanning both Akad and Resepsi (2362x8396) -->
+      <div class="layer-container event-canvas-tall">
+        <img src="Asset 6/bg bunga.png" class="layer-img event-bg-tall" alt="Background Bunga Akad dan Resepsi">
+        
+        <!-- Akad Nikah Block (Top Half) -->
+        <div class="event-block-inner akad-block-inner">
+          <img src="Asset 6/banner akad.png" class="layer-img event-banner-img pop-out-scroll" alt="Akad Nikah">
+          <a href="https://maps.google.com/?q=Masjid+Aisyah+Tasikmalaya" target="_blank" rel="noopener noreferrer" class="event-map-hotspot hotspot-akad" title="Buka Lokasi di Google Maps">
+            <img src="Asset 6/google map akad.png" class="layer-img gmap-btn-img" alt="Google Map Akad">
+          </a>
+        </div>
+
+        <!-- Resepsi Pernikahan Block (Bottom Half) -->
+        <div class="event-block-inner resepsi-block-inner">
+          <img src="Asset 6/banner resepsi.png" class="layer-img event-banner-img pop-out-scroll" alt="Resepsi Pernikahan">
+          <a href="https://maps.google.com/?q=Gedung+Aisyah+Tasikmalaya" target="_blank" rel="noopener noreferrer" class="event-map-hotspot hotspot-resepsi" title="Buka Lokasi di Google Maps">
+            <img src="Asset 6/google map resepsi.png" class="layer-img gmap-btn-img" alt="Google Map Resepsi">
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 7: LOVE STORY SCRAPBOOK ==================== -->
+    <section class="section story-section" id="story">
+      <div class="layer-container story-canvas-tall">
+        <!-- Notebook scrapbook background -->
+        <img src="asset 8/bg story.png" class="layer-img story-bg-paper" alt="Our Love Story - Scrapbook Timeline">
+        <!-- Individual stamps with scroll pop-out animation -->
+        <img src="asset 8/stamp 1.png" class="layer-img story-stamp pop-out-scroll" alt="Story 2017">
+        <img src="asset 8/stamp 2.png" class="layer-img story-stamp pop-out-scroll" alt="Story 2017-2021">
+        <img src="asset 8/stamp3.png" class="layer-img story-stamp pop-out-scroll" alt="Story 2021-2025">
+        <img src="asset 8/stamp4.png" class="layer-img story-stamp pop-out-scroll" alt="Story Reunion 2025">
+        <img src="asset 8/stamp5.png" class="layer-img story-stamp pop-out-scroll" alt="Story July 2026">
+        <img src="asset 8/stamp6.png" class="layer-img story-stamp pop-out-scroll" alt="Story 05-11-2026">
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 8: RSVP & WISHES ==================== -->
+    <section class="section rsvp-section" id="rsvp">
+      <!-- Background grass for wishes -->
+      <img src="Asset 9/bg grass wish.png" class="layer-img wishes-bg-grass" alt="Background Grass Wishes">
+      <div class="rsvp-content-container">
+        <div class="wishes-title-block pop-out-scroll">
+          <img src="Asset 9/wishes_sticker_cropped.png" class="wishes-sticker-img" alt="Wishes - Berikan doa dan ucapan terbaik untuk kami">
+          <img src="asset 1/monogram_icon.png" class="wishes-monogram-img" alt="Monogram RA">
+        </div>
+
+        <div class="rsvp-form-card pop-out-scroll">
+          <form id="rsvpForm" class="rsvp-form">
+            <!-- Nama Input -->
+            <div class="form-group">
+              <input type="text" id="formName" class="form-control" placeholder="Nama.." required>
+            </div>
+
+            <!-- Ucapan & Doa -->
+            <div class="form-group">
+              <textarea id="formMessage" class="form-control form-textarea" rows="3" placeholder="Pesan.." required></textarea>
+            </div>
+
+            <!-- Konfirmasi Kehadiran Ribbon -->
+            <div class="attendance-ribbon-block">
+              <div class="ribbon-tail left"></div>
+              <span class="ribbon-text">Konfirmasi Kehadiran</span>
+              <div class="ribbon-tail right"></div>
+            </div>
+
+            <!-- Kehadiran Options -->
+            <div class="attendance-options">
+              <label class="attendance-btn">
+                <input type="radio" name="attendance" value="Hadir" checked>
+                <span class="attendance-pill">Hadir</span>
+              </label>
+              <label class="attendance-btn">
+                <input type="radio" name="attendance" value="Tidak Hadir">
+                <span class="attendance-pill">Tidak Hadir</span>
+              </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-submit-rsvp" id="btnSubmitRsvp">
+              <i class="fa-solid fa-paper-plane"></i> Kirim Ucapan & Doa
+            </button>
+          </form>
+        </div>
+
+        <!-- Wishes Message Board -->
+        <div class="wishes-board pop-out-scroll">
+          <div class="wishes-list" id="wishesList">
+            <!-- Dynamically populated via app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 9: DIGITAL GIFT & CLOSING ==================== -->
+    <section class="section gift-section" id="gift">
+      <div class="layer-container gift-canvas">
+        <img src="asset 10/bg_akhir_clean_batik.png" class="layer-img gift-bg-img" alt="Digital Gift & Terima Kasih">
+
+        <!-- Illustrated Bank Slots Container: Mandiri Only (Single Bubble Banner) -->
+        <div class="gift-slots-wrapper pop-out-scroll">
+          <div class="gift-slot-card slot-mandiri">
+            <img src="asset 10/banner_atm_single.png" class="gift-bubble-bg" alt="Banner ATM Mandiri">
+            <div class="gift-card-content">
+              <div class="slot-bank-header">
+                <span class="slot-bank-name mandiri">MANDIRI</span>
+              </div>
+              <div class="slot-account-number" id="mandiriNumber">1770099290988</div>
+              <div class="slot-account-holder">a. n. Unun Nur Ainun</div>
+              <button class="btn-slot-copy" data-account="1770099290988" data-bank="Mandiri" title="Salin No Rekening Mandiri">
+                <i class="fa-regular fa-copy"></i> Salin
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Closing Monogram Logo (Center below Wasalamu'alaikum) -->
+        <div class="closing-monogram-wrapper pop-out-scroll">
+          <img src="asset 1/monogram_icon.png" class="closing-monogram-img" alt="Monogram Rifki & Ainun">
+        </div>
+
+        <!-- Very End Credit: Made with love by @fwwzazmi_ -->
+        <div class="closing-credit-wrapper">
+          <p class="closing-credit-text">Made with love by <a href="https://instagram.com/fwwzazmi_" target="_blank" rel="noopener noreferrer">@fwwzazmi_</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FLOATING BOTTOM NAVIGATION ==================== -->
+    <nav class="bottom-nav" id="bottomNav">
+      <a href="#hero" class="nav-item active" data-target="hero">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+      <a href="#mempelai" class="nav-item" data-target="mempelai">
+        <i class="fa-solid fa-heart"></i>
+        <span>Mempelai</span>
+      </a>
+      <a href="#acara" class="nav-item" data-target="acara">
+        <i class="fa-solid fa-calendar-day"></i>
+        <span>Acara</span>
+      </a>
+      <a href="#story" class="nav-item" data-target="story">
+        <i class="fa-solid fa-book-open"></i>
+        <span>Story</span>
+      </a>
+      <a href="#rsvp" class="nav-item" data-target="rsvp">
+        <i class="fa-solid fa-envelope"></i>
+        <span>RSVP</span>
+      </a>
+      <a href="#gift" class="nav-item" data-target="gift">
+        <i class="fa-solid fa-gift"></i>
+        <span>Kado</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Toast Notification Box -->
+  <div class="toast-notification" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">Berhasil disalin!</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
